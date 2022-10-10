@@ -27,8 +27,8 @@ int main(){
     printf("\nWin: ");
     for(t=0;t<x;t++){printf("%d ",Win[t]);}
   }
-  
-  //delete Winnumber 
+
+  //delete Winnumber
   for(i=0;i<20;i++){
     for(j=0;j<x;j++){
       if(Bingo[i]!=Win[j]){left[i]=1;}
@@ -47,9 +47,11 @@ int main(){
   //play game
   while (1==1){
     //count how much number needed in straight line
+    //for(t=0;t<4;j++){straight[t]=0;}
     for(i=0;i<4;i++){for(j=i;j<20;j+=4){sc+=left[j];}straight[i]=sc;sc=0;}
 
     //count how much number needed in horiazontal line
+    //for(t=0;t<5;j++){horizontal[t]=0;}
     for(i=0;i<20;i+=4){for(j=i;j<i+4;j++){hc+=left[j];}m=i/4;horizontal[m]=hc;hc=0;}
 
     //check
@@ -67,17 +69,17 @@ int main(){
     for(i=0;i<5;i++){if (horizontal[i]==0){line+=1;}}
     for(i=0;i<4;i++){if (straight[i]==0){line+=1;}}
 
-    if (line >=k){
-      printf("%d\n",y);
-      for (i=0;i<y;i++){printf("%d ",bn[i]);}
-      break;
-      }
-
     //check
     if (1==0){
     printf("line: %d\n",line);
     }
-    
+
+    if (line >=k){
+      printf("%d\n",y);
+      for (i=0;i<y;i++){printf("%d",bn[i]);if(i==y-1){break;}printf(" ");}
+      break;
+      }
+
     //establish compare matrix
     for(i=0;i<20;i++){compare[i]=horizontal[i/4]*straight[i%4]*left[i];}
 
